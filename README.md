@@ -111,8 +111,11 @@ O diagrama define a estrutura da tabela `usuario` no banco de dados.
 
 ## 👥 Equipe
 
-* **Jefferson** – Líder técnico e desenvolvedor principal
-* **Maria Liliane Vasconcelos Barros** – Auxiliar de desenvolvimento e documentação
+* **Jefferson** – Líder técnico e desenvolvedor principal, responsável pela arquitetura do projeto, tomada de decisões estratégicas e implementação das funcionalidades principais.
+
+* **Maria Liliane Vasconcelos Barros** – Auxiliar de desenvolvimento e documentação, tua no suporte ao desenvolvimento, testes e organização da documentação técnica, garantindo clareza e acessibilidade.
+
+* **João Vitor Ruggi Seara** Especialista em desenvolvimento backend e integração de sistemas, revisão de código e mentoria técnica para a equipe.
 
 ---
 
