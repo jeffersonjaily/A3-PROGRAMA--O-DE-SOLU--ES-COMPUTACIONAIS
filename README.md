@@ -119,3 +119,7 @@ O diagrama define a estrutura da tabela `usuario` no banco de dados.
 ## 📜 Licença
 
 Este projeto é destinado a fins educacionais. Sinta-se à vontade para utilizá-lo como referência, dando os devidos créditos à equipe.
+
+O código-fonte completo deste projeto está disponível no GitHub. Sinta-se à vontade para explorar, clonar e utilizar como referência para seus estudos.
+
+[➡️ Acessar o Repositório no GitHub](https://github.com/jeffersonjaily/A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS)
