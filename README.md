@@ -67,12 +67,12 @@ A estrutura de arquivos segue a separação de responsabilidades dos padrões MV
 O diagrama ilustra a relação entre as classes, destacando a separação de responsabilidades.
 *(Sugestão: Atualizar o diagrama para incluir a classe `UsuarioDAO` e as novas relações)*
 
-![Diagrama de Classes](./Diagrama_20de_20Classes.png)
+![Diagrama de Classes](./Diagrama_de_Classes.png)
 
 ### Diagrama Entidade-Relacionamento (DER)
 O diagrama define a estrutura da tabela `usuario` no banco de dados.
 
-![Diagrama Entidade-Relacionamento](./Diagrama_20Entidade_Re.jpg)
+![Diagrama Entidade-Relacionamento](./Diagrama_Entidade_Re.png)
 
 
 ## 6. Tecnologias Utilizadas
