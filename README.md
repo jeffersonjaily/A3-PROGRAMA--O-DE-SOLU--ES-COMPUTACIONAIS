@@ -8,8 +8,6 @@
 
 # Sistema de Gerenciamento de Usuários
 
-# Sistema de Gerenciamento de Usuários
-
 ## 1. Introdução
 
 Este projeto consiste em um sistema de gerenciamento de usuários, desenvolvido em **Java** aplicando **Programação Orientada a Objetos (POO)** e o padrão arquitetônico **Model-View-Controller (MVC)**.  
@@ -121,9 +119,8 @@ O diagrama define a estrutura da tabela `usuario` no banco de dados.
 * [ ] **Tratamento de Exceções:** Implementar um tratamento de exceções mais robusto na camada de persistência.
 * [ ] **Interface Gráfica:** Substituir a interface de console por uma GUI com JavaFX ou Swing.
 * [ ] **Testes Unitários:** Desenvolver testes com JUnit para garantir a qualidade do código.
-
+ 
 ---
-
 
 ## 👥 Equipe
 
