@@ -124,6 +124,7 @@ O diagrama define a estrutura da tabela `usuario` no banco de dados.
 
 ---
 
+
 ## 👥 Equipe
 
 * **Jefferson** – Líder técnico e desenvolvedor principal, responsável pela arquitetura do projeto, tomada de decisões estratégicas e implementação das funcionalidades principais.
