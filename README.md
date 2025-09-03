@@ -73,7 +73,7 @@ A estrutura de arquivos segue a separação de responsabilidades dos padrões **
 ├── Diagrama_Entidade_Re.jpg
 └── README.md
 
----
+```
 
 ## 5. Modelagem do Sistema
 
