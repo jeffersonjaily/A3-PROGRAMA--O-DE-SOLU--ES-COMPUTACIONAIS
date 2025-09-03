@@ -1,4 +1,3 @@
-// UsuarioView.java (View)
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,15 +40,13 @@ public class UsuarioView {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Erro: ID inválido. Por favor, insira um número.");
-            return -1; // Retorna um valor inválido para indicar erro
+            return -1;
         }
     }
 
     public void exibirListaUsuarios(List<Usuario> usuarios) {
         System.out.println("\n--- LISTA DE USUÁRIOS ---");
-        if (usuarios.isEmpty()) {
-            // A mensagem agora é tratada no controller, mas é uma boa prática verificar aqui também.
-        } else {
+        if (!usuarios.isEmpty()) {
             for (Usuario usuario : usuarios) {
                 System.out.println(usuario.exibirDados());
             }

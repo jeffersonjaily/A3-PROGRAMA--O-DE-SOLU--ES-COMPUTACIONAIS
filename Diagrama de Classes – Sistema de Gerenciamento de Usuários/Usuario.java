@@ -28,8 +28,6 @@ public class Usuario {
         return email;
     }
     
-    // O getter da senha geralmente não é exposto por segurança,
-    // mas mantido aqui para fins didáticos.
     public String getSenha() {
         return senha;
     }

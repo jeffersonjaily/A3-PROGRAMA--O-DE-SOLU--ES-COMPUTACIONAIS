@@ -1,4 +1,3 @@
-// Main.java (Ponto de Entrada)
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,12 +40,12 @@ public class Main {
 
                 case "5": // Sair
                     System.out.println("Encerrando o sistema...");
-                    scanner.close(); // Boa prática fechar o scanner
+                    scanner.close();
                     return;
 
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("Opção inválida.");
             }
         }
-    }java Main
+    }
 }
