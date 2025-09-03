@@ -117,7 +117,7 @@ O diagrama define a estrutura da tabela `usuario` no banco de dados.
 * [x] **Estrutura MVC:** Estrutura inicial clara e organizada.
 * [x] **Padrão DAO:** Refatoração da persistência para usar o padrão Data Access Object.
 * [x] **Integração JDBC:** Implementação das chamadas SQL (INSERT, SELECT, UPDATE, DELETE) na camada DAO.
-* [ ] **Validação de Dados:** Adicionar validações para os dados de entrada (ex: formato de e-mail, campos vazios).
+* [x] **Validação de Dados:** Adicionar validações para os dados de entrada (ex: formato de e-mail, campos vazios).
 * [ ] **Tratamento de Exceções:** Implementar um tratamento de exceções mais robusto na camada de persistência.
 * [ ] **Interface Gráfica:** Substituir a interface de console por uma GUI com JavaFX ou Swing.
 * [ ] **Testes Unitários:** Desenvolver testes com JUnit para garantir a qualidade do código.
