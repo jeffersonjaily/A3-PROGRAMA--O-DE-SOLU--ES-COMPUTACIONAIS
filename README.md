@@ -6,60 +6,75 @@
 ![JDBC](https://img.shields.io/badge/Database-JDBC-red?style=for-the-badge)
 ![MySQL](https://img.shields.io/badge/SGBD-MySQL-blue?style=for-the-badge&logo=mysql)
 
+# Sistema de Gerenciamento de Usuários
+
+# Sistema de Gerenciamento de Usuários
+
 ## 1. Introdução
 
-[cite_start]Este projeto consiste em um sistema de gerenciamento de usuários, desenvolvido em Java aplicando Programação Orientada a Objetos (POO) e o padrão arquitetônico Model-View-Controller (MVC). [cite: 3] [cite_start]O objetivo principal é demonstrar a separação de responsabilidades entre as camadas (Modelo, Visão e Controle) [cite: 4][cite_start], aplicando boas práticas de arquitetura de software e garantindo uma estrutura de código modular e escalável. [cite: 9]
+Este projeto consiste em um sistema de gerenciamento de usuários, desenvolvido em **Java** aplicando **Programação Orientada a Objetos (POO)** e o padrão arquitetônico **Model-View-Controller (MVC)**.  
+
+O objetivo principal é demonstrar a separação de responsabilidades entre as camadas (Modelo, Visão e Controle), aplicando boas práticas de arquitetura de software e garantindo uma estrutura de código modular e escalável.
+
+---
 
 ## 2. Escopo do Projeto
 
-[cite_start]O sistema tem como foco as funcionalidades essenciais de gerenciamento de usuários, com armazenamento de dados em um banco de dados relacional. [cite: 16]
+O sistema tem como foco as funcionalidades essenciais de gerenciamento de usuários, com armazenamento de dados em um banco de dados relacional.
 
-**Funcionalidades incluídas:**
-* [cite_start]Cadastro de novos usuários. [cite: 12]
-* [cite_start]Edição e exclusão de usuários existentes. [cite: 13]
-* [cite_start]Listagem de todos os usuários cadastrados. [cite: 14]
-* [cite_start]Autenticação de usuários (funcionalidade a ser implementada). [cite: 15]
+### Funcionalidades incluídas
+- Cadastro de novos usuários  
+- Edição e exclusão de usuários existentes  
+- Listagem de todos os usuários cadastrados  
+- Autenticação de usuários (**a ser implementada**)  
 
-**Funcionalidades não incluídas:**
-* [cite_start]Integrações com redes sociais. [cite: 18]
-* [cite_start]Recuperação de senha por e-mail. [cite: 19]
-* [cite_start]Aplicativos móveis. [cite: 20]
+### Funcionalidades não incluídas
+- Integrações com redes sociais  
+- Recuperação de senha por e-mail  
+- Aplicativos móveis  
+
+---
 
 ## 3. Requisitos do Sistema
 
 ### Requisitos Funcionais (RF)
-* [cite_start]**RF01:** O sistema deve permitir o cadastro de novos usuários. [cite: 22]
-* [cite_start]**RF02:** O sistema deve permitir a edição dos dados de um usuário. [cite: 23]
-* [cite_start]**RF03:** O sistema deve permitir a exclusão de usuários. [cite: 24]
-* [cite_start]**RF04:** O sistema deve listar todos os usuários cadastrados. [cite: 25]
-* [cite_start]**RF05:** O sistema deve autenticar usuários com login e senha (escopo futuro). [cite: 26]
-* [cite_start]**RF06:** O sistema deve armazenar e recuperar dados de um banco de dados via JDBC. [cite: 27]
+- **RF01:** O sistema deve permitir o cadastro de novos usuários.  
+- **RF02:** O sistema deve permitir a edição dos dados de um usuário.  
+- **RF03:** O sistema deve permitir a exclusão de usuários.  
+- **RF04:** O sistema deve listar todos os usuários cadastrados.  
+- **RF05:** O sistema deve autenticar usuários com login e senha (escopo futuro).  
+- **RF06:** O sistema deve armazenar e recuperar dados de um banco de dados via JDBC.  
 
 ### Requisitos Não Funcionais (RNF)
-* [cite_start]**RNF01:** O sistema deve ser desenvolvido em Java, utilizando POO e os padrões MVC e DAO. [cite: 29]
-* [cite_start]**RNF02:** O sistema deve garantir segurança no armazenamento de dados. [cite: 31]
-* [cite_start]**RNF03:** O sistema deve ser modular e de fácil manutenção. [cite: 32]
-* [cite_start]**RNF04:** O sistema deve responder às ações do usuário em tempo hábil (até 2 segundos). [cite: 33]
+- **RNF01:** O sistema deve ser desenvolvido em Java, utilizando POO e os padrões MVC e DAO.  
+- **RNF02:** O sistema deve garantir segurança no armazenamento de dados.  
+- **RNF03:** O sistema deve ser modular e de fácil manutenção.  
+- **RNF04:** O sistema deve responder às ações do usuário em tempo hábil (até 2 segundos).  
+
+---
 
 ## 4. Arquitetura e Estrutura do Projeto
 
-A estrutura de arquivos segue a separação de responsabilidades dos padrões MVC e DAO.
+A estrutura de arquivos segue a separação de responsabilidades dos padrões **MVC** e **DAO**.
 
+```plaintext
 /src
-├── Main.java               # Classe Main – ponto de entrada do sistema
+├── Main.java                     # Classe Main – ponto de entrada do sistema
 ├── model/
-│   └── Usuario.java        # Camada Model – representa a entidade de dados
+│   └── Usuario.java              # Camada Model – representa a entidade de dados
 ├── view/
-│   └── UsuarioView.java    # Camada View – interação com o usuário (console)
+│   └── UsuarioView.java          # Camada View – interação com o usuário (console)
 ├── controller/
-│   └── UsuarioController.java # Camada Controller – lógica de negócio
+│   └── UsuarioController.java    # Camada Controller – lógica de negócio
 └── persistence/
-├── ConexaoBD.java      # Classe utilitária para conexão com o banco
-└── UsuarioDAO.java     # Camada de Acesso a Dados (operações CRUD)
-/
+    ├── ConexaoBD.java            # Classe utilitária para conexão com o banco
+    └── UsuarioDAO.java           # Camada de Acesso a Dados (operações CRUD)
+
+/docs
 ├── Diagrama_de_Classes.png
 ├── Diagrama_Entidade_Re.jpg
 └── README.md
+
 
 ## 5. Modelagem do Sistema
 
