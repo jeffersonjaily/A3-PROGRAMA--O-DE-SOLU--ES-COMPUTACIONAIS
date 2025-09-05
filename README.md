@@ -90,7 +90,7 @@ O objetivo é demonstrar a separação de responsabilidades entre as camadas (Mo
 ### 4.1 Usando o Instalador (recomendado)
 
 1. Navegue até o instalador:  
-   G:\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\instalador\Gerenciamento_de_Usuarios_Installer.exe
+   \A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\instalador\Gerenciamento_de_Usuarios_Installer.exe
 2. Execute o instalador e siga os passos na tela.  
 3. Um atalho será criado no **Menu Iniciar**. Clique para abrir o sistema.
 
