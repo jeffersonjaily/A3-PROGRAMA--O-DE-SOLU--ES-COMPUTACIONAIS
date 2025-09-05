@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
@@ -21,35 +22,47 @@ import javafx.stage.Stage;
 public class UsuarioController {
 
     // --- Componentes da Interface Gráfica (injetados pelo FXML) ---
-    @FXML private TextField idTextField;
-    @FXML private TextField nomeTextField;
-    @FXML private TextField emailTextField;
-    @FXML private PasswordField senhaField;
-    @FXML private Button salvarButton;
-    @FXML private Button novoButton;
-    @FXML private Button removerButton;
-    @FXML private TableView<Usuario> tabelaUsuarios;
-    @FXML private TableColumn<Usuario, Integer> colunaId;
-    @FXML private TableColumn<Usuario, String> colunaNome;
-    @FXML private TableColumn<Usuario, String> colunaEmail;
-    
+    @FXML
+    private TextField idTextField;
+    @FXML
+    private TextField nomeTextField;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private PasswordField senhaField;
+    @FXML
+    private Button salvarButton;
+    @FXML
+    private Button novoButton;
+    @FXML
+    private Button removerButton;
+    @FXML
+    private TableView<Usuario> tabelaUsuarios;
+    @FXML
+    private TableColumn<Usuario, Integer> colunaId;
+    @FXML
+    private TableColumn<Usuario, String> colunaNome;
+    @FXML
+    private TableColumn<Usuario, String> colunaEmail;
+
     private UsuarioDAO usuarioDAO;
     private Usuario usuarioSelecionado;
 
-    // O método initialize é chamado automaticamente pelo JavaFX após o FXML ser carregado
+    // O método initialize é chamado automaticamente pelo JavaFX após o FXML ser
+    // carregado
     @FXML
     public void initialize() {
         this.usuarioDAO = new UsuarioDAO();
-        
-        // Configura as colunas da tabela para saber de onde pegar os dados da classe Usuario
+
+        // Configura as colunas da tabela para saber de onde pegar os dados da classe
+        // Usuario
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         // Adiciona um "listener" para saber quando um usuário é selecionado na tabela
         tabelaUsuarios.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> selecionarUsuario(newValue)
-        );
+                (observable, oldValue, newValue) -> selecionarUsuario(newValue));
 
         atualizarTabela();
     }
@@ -60,7 +73,7 @@ public class UsuarioController {
     private void handleNovo() {
         limparCampos();
     }
-    
+
     @FXML
     private void handleSalvar() {
         if (usuarioSelecionado == null) {
@@ -89,16 +102,17 @@ public class UsuarioController {
     @FXML
     private void handleConfigurarDb() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfigDbView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ConfigDbView.fxml"));
             Parent root = loader.load();
+
             Stage stage = new Stage();
             stage.setTitle("Configurar Conexão");
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL); // Bloqueia a janela principal
-            stage.showAndWait(); // Mostra e espera a janela de config fechar
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível abrir a tela de configuração.");
+            showAlert(AlertType.ERROR, "Erro", "Não foi possível abrir a tela de configuração.");
         }
     }
 
@@ -106,18 +120,19 @@ public class UsuarioController {
     private void handleSair() {
         Platform.exit();
     }
-    
+
     // --- Lógica de Negócio ---
 
     private void criarUsuario() {
-        if (!validarCampos(true)) return; // Passa 'true' para checar unicidade do email
-        
+        if (!validarCampos(true))
+            return; // Passa 'true' para checar unicidade do email
+
         String nome = nomeTextField.getText();
         String email = emailTextField.getText();
         String senha = senhaField.getText();
 
         // Passa null para o perfil, pois o banco de dados tem 'user' como padrão
-        Usuario novoUsuario = new Usuario(0, nome, email.toLowerCase(), senha, null); 
+        Usuario novoUsuario = new Usuario(0, nome, email.toLowerCase(), senha, null);
         if (usuarioDAO.criarUsuario(novoUsuario)) {
             showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Usuário criado com sucesso!");
             atualizarTabela();
@@ -128,7 +143,8 @@ public class UsuarioController {
     }
 
     private void atualizarUsuario() {
-        if (!validarCampos(false)) return; // Passa 'false' para não checar unicidade
+        if (!validarCampos(false))
+            return; // Passa 'false' para não checar unicidade
 
         usuarioSelecionado.setNome(nomeTextField.getText());
         usuarioSelecionado.setEmail(emailTextField.getText().toLowerCase());
@@ -142,9 +158,9 @@ public class UsuarioController {
             showAlert(Alert.AlertType.ERROR, "Erro", "Falha ao atualizar usuário.");
         }
     }
-    
+
     private void removerUsuario() {
-         if (usuarioDAO.removerUsuario(usuarioSelecionado.getId())) {
+        if (usuarioDAO.removerUsuario(usuarioSelecionado.getId())) {
             showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Usuário removido com sucesso!");
             atualizarTabela();
             limparCampos();
@@ -182,7 +198,7 @@ public class UsuarioController {
         tabelaUsuarios.getSelectionModel().clearSelection();
         removerButton.setDisable(true);
     }
-    
+
     // Método de validação centralizado
     private boolean validarCampos(boolean checarUnicidadeEmail) {
         String email = emailTextField.getText();
