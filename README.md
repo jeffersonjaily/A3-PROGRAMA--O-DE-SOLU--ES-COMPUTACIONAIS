@@ -10,19 +10,15 @@
 
 ## 1. Introdução
 
-Este projeto consiste em um sistema de gerenciamento de usuários, desenvolvido em **Java** aplicando **Programação Orientada a Objetos (POO)** e o padrão arquitetônico **Model-View-Controller (MVC)**.  
-
-O objetivo principal é demonstrar a separação de responsabilidades entre as camadas (Modelo, Visão e Controle), aplicando boas práticas de arquitetura de software e garantindo uma estrutura de código modular e escalável.
+Este projeto consiste em um sistema de gerenciamento de usuários, desenvolvido em **Java** aplicando **POO** e o padrão **MVC**.  
+O objetivo é demonstrar a separação de responsabilidades entre as camadas (Modelo, Visão e Controle) e aplicar boas práticas de arquitetura de software.
 
 ---
 
 ## 2. Escopo do Projeto
 
-O sistema tem como foco as funcionalidades essenciais de gerenciamento de usuários, com armazenamento de dados em um banco de dados relacional.
-
 ### Funcionalidades incluídas
-- Cadastro de novos usuários  
-- Edição e exclusão de usuários existentes  
+- Cadastro, edição e exclusão de usuários  
 - Listagem de todos os usuários cadastrados  
 - Autenticação de usuários (**a ser implementada**)  
 
@@ -33,110 +29,123 @@ O sistema tem como foco as funcionalidades essenciais de gerenciamento de usuár
 
 ---
 
-## 3. Requisitos do Sistema
-
-### Requisitos Funcionais (RF)
-- **RF01:** O sistema deve permitir o cadastro de novos usuários.  
-- **RF02:** O sistema deve permitir a edição dos dados de um usuário.  
-- **RF03:** O sistema deve permitir a exclusão de usuários.  
-- **RF04:** O sistema deve listar todos os usuários cadastrados.  
-- **RF05:** O sistema deve autenticar usuários com login e senha (escopo futuro).  
-- **RF06:** O sistema deve armazenar e recuperar dados de um banco de dados via JDBC.  
-
-### Requisitos Não Funcionais (RNF)
-- **RNF01:** O sistema deve ser desenvolvido em Java, utilizando POO e os padrões MVC e DAO.  
-- **RNF02:** O sistema deve garantir segurança no armazenamento de dados.  
-- **RNF03:** O sistema deve ser modular e de fácil manutenção.  
-- **RNF04:** O sistema deve responder às ações do usuário em tempo hábil (até 2 segundos).  
-
----
-
-## 4. Arquitetura e Estrutura do Projeto
-
-A estrutura de arquivos segue a separação de responsabilidades dos padrões **MVC** e **DAO**.
+## 3. Estrutura de Arquivos do Projeto
 
 ```plaintext
-/src
-├── Main.java                     # Classe Main – ponto de entrada do sistema
-├── model/
-│   └── Usuario.java              # Camada Model – representa a entidade de dados
-├── view/
-│   └── UsuarioView.java          # Camada View – interação com o usuário (console)
-├── controller/
-│   └── UsuarioController.java    # Camada Controller – lógica de negócio
-└── persistence/
-    ├── ConexaoBD.java            # Classe utilitária para conexão com o banco
-    └── UsuarioDAO.java           # Camada de Acesso a Dados (operações CRUD)
-
-/docs
+\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\
+├── .vscode
+├── assets\
+│   ├── favicon.ico
+│   ├── ícone para um aplica-Photoroom.png
+│   └── ícone para um aplica.png
+├── Gerenciamento_de_Usuarios\
+│   ├── .vscode
+│   ├── bin\
+│   │   ├── view\
+│   │   │   ├── ConfigDbView.fxml
+│   │   │   └── UsuarioView.fxml
+│   │   ├── ConexaoBD.class
+│   │   ├── ConfigDbController.class
+│   │   ├── Gerenciamento_de_Usuarios.exe
+│   │   ├── Gerenciamento_de_Usuarios.jar
+│   │   ├── MainApp.class
+│   │   ├── Usuario.class
+│   │   ├── UsuarioController.class
+│   │   ├── UsuarioDAO.class
+│   │   ├── UsuarioView.class
+│   │   ├── UsuarioView.fxml
+│   │   └── ValidaEmail.class
+│   ├── lib\
+│   ├── ConexaoBD.java
+│   ├── ConfigDbController.java
+│   ├── ConfigDbView.fxml
+│   ├── MainApp.java
+│   ├── mysql-connector-j-9.4.0.jar
+│   ├── Usuario.java
+│   ├── UsuarioController.java
+│   ├── UsuarioDAO.java
+│   ├── UsuarioView.java
+│   └── ValidaEmail.java
+├── instalador\
+│   └── Gerenciamento_de_Usuarios_Installer.exe
+├── javafx-sdk-24.0.2\
+│   ├── bin
+│   ├── legal
+│   ├── lib
+│   ├── src
+│   └── src.zip
+├── .gitattributes
+├── .gitignore
 ├── Diagrama_de_Classes.png
-├── Diagrama_Entidade_Re.jpg
+├── Diagrama_Entidade_Re.png
+├── Especificação de Requisitos do Sistema de Gerenciamento de Usuários.docx
+├── gerenciador.xlm.xml
 └── README.md
-
 ```
 
-## 5. Modelagem do Sistema
-
-### Diagrama de Classes (UML)
-O diagrama ilustra a relação entre as classes, destacando a separação de responsabilidades.
-*(Sugestão: Atualizar o diagrama para incluir a classe `UsuarioDAO` e as novas relações)*
-
-![Diagrama de Classes](./Diagrama_de_Classes.png)
-
-### Diagrama Entidade-Relacionamento (DER)
-O diagrama define a estrutura da tabela `usuario` no banco de dados.
-
-![Diagrama Entidade-Relacionamento](./Diagrama_Entidade_Re.png)
-
-
-## 6. Tecnologias Utilizadas
-* **Linguagem:** Java 17+
-* **Banco de Dados:** MySQL
-* **API de Persistência:** JDBC (Java Database Connectivity) [cite: 38]
-* **Padrões de Arquitetura:** MVC (Model-View-Controller) e DAO (Data Access Object) [cite: 36]
-* **Modelagem:** UML e DER
-
-## 7. Como Executar
-
-1.  **Pré-requisitos:**
-    * Java JDK 17+ instalado e configurado.
-    * Um servidor de banco de dados MySQL em execução.
-
-2.  **Configuração do Banco de Dados:**
-    * Crie um banco de dados (ex: `CREATE DATABASE gestao_usuarios;`).
-    * Execute o script SQL para criar a tabela `usuario`.
-    * Ajuste as credenciais (`URL`, `USUARIO`, `SENHA`) na classe `ConexaoBD.java`.
-
-3.  **Execução:**
-    * Compile todos os arquivos `.java` a partir da pasta `/src`: `javac -encoding UTF-8 *.java model/*.java view/*.java controller/*.java persistence/*.java`
-    * Execute a classe principal: `java Main`
-
-## 8. Evolução do Projeto (Próximos Passos)
-
-* [x] **Estrutura MVC:** Estrutura inicial clara e organizada.
-* [x] **Padrão DAO:** Refatoração da persistência para usar o padrão Data Access Object.
-* [x] **Integração JDBC:** Implementação das chamadas SQL (INSERT, SELECT, UPDATE, DELETE) na camada DAO.
-* [x] **Validação de Dados:** Adicionar validações para os dados de entrada (ex: formato de e-mail, campos vazios).
-* [ ] **Tratamento de Exceções:** Implementar um tratamento de exceções mais robusto na camada de persistência.
-* [ ] **Interface Gráfica:** Substituir a interface de console por uma GUI com JavaFX ou Swing.
-* [ ] **Testes Unitários:** Desenvolver testes com JUnit para garantir a qualidade do código.
- 
 ---
 
-## 👥 Equipe
+## 4. Como Executar
 
-* **Jefferson** – Líder técnico e desenvolvedor principal, responsável pela arquitetura do projeto, tomada de decisões estratégicas e implementação das funcionalidades principais.
+### 4.1 Usando o Instalador (recomendado)
 
-* **Maria Liliane Vasconcelos Barros** – Auxiliar de desenvolvimento e documentação, tua no suporte ao desenvolvimento, testes e organização da documentação técnica, garantindo clareza e acessibilidade.
-
-* **João Vitor Ruggi Seara** Especialista em desenvolvimento backend e integração de sistemas, revisão de código e mentoria técnica para a equipe.
+1. Navegue até o instalador:  
+   G:\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\instalador\Gerenciamento_de_Usuarios_Installer.exe
+2. Execute o instalador e siga os passos na tela.  
+3. Um atalho será criado no **Menu Iniciar**. Clique para abrir o sistema.
 
 ---
 
-## 📜 Licença
+### 4.2 Manualmente (para desenvolvedores)
 
-Este projeto é destinado a fins educacionais. Sinta-se à vontade para utilizá-lo como referência, dando os devidos créditos à equipe.
+1. Pré-requisitos:  
+   - Java JDK 17+  
+   - MySQL ativo  
 
-O código-fonte completo deste projeto está disponível no GitHub. Sinta-se à vontade para explorar, clonar e utilizar como referência para seus estudos.
+2. Configure o banco de dados (`gestao_usuarios`) e ajuste as credenciais em `ConexaoBD.java`.  
+
+3. Compile os arquivos:  
+   javac -encoding UTF-8 *.java model/*.java view/*.java controller/*.java persistence/*.java
+
+4. Execute a aplicação:  
+   java Main
+
+---
+
+## 5. Tecnologias Utilizadas
+
+- **Java 17+**  
+- **MySQL**  
+- **JDBC**  
+- **MVC e DAO**  
+- **Modelagem UML e DER**  
+- **UX/UI Design** – Foco na experiência e interface do usuário
+
+---
+
+## 6. Evolução do Projeto
+
+- Estrutura MVC  
+- Padrão DAO  
+- Integração JDBC  
+- Validação de Dados  
+- Tratamento de Exceções  
+- Interface Gráfica (JavaFX ou Swing)  
+- Testes Unitários (JUnit)
+---
+
+## 7. Equipe
+
+- **Jefferson** – Líder técnico e desenvolvedor principal  
+- **Maria Liliane Vasconcelos Barros** – Auxiliar de desenvolvimento e documentação  
+- **João Vitor Ruggi Seara** – Especialista backend e integração  
+
+---
+
+## 8. Licença
+
+Este projeto é educacional. Dê os devidos créditos à equipe ao utilizá-lo.
 
 [➡️ Acessar o Repositório no GitHub](https://github.com/jeffersonjaily/A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS)
+
+
