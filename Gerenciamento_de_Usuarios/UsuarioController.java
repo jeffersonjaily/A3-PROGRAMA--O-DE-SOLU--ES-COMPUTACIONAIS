@@ -1,15 +1,22 @@
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.util.List;
-import java.util.Optional;
-import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class UsuarioController {
 
@@ -47,7 +54,7 @@ public class UsuarioController {
         atualizarTabela();
     }
 
-    // --- Métodos de Ação dos Botões ---
+    // --- Métodos de Ação dos Botões e Menus ---
 
     @FXML
     private void handleNovo() {
@@ -56,10 +63,9 @@ public class UsuarioController {
     
     @FXML
     private void handleSalvar() {
-        // Se não há usuário selecionado, é um novo cadastro
         if (usuarioSelecionado == null) {
             criarUsuario();
-        } else { // Se há um usuário selecionado, é uma atualização
+        } else {
             atualizarUsuario();
         }
     }
@@ -79,22 +85,39 @@ public class UsuarioController {
             }
         }
     }
+
+    @FXML
+    private void handleConfigurarDb() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfigDbView.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Configurar Conexão");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL); // Bloqueia a janela principal
+            stage.showAndWait(); // Mostra e espera a janela de config fechar
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível abrir a tela de configuração.");
+        }
+    }
+
+    @FXML
+    private void handleSair() {
+        Platform.exit();
+    }
     
     // --- Lógica de Negócio ---
 
     private void criarUsuario() {
-        if (!validarCampos()) return;
+        if (!validarCampos(true)) return; // Passa 'true' para checar unicidade do email
         
         String nome = nomeTextField.getText();
         String email = emailTextField.getText();
         String senha = senhaField.getText();
 
-        if (usuarioDAO.emailJaExiste(email)) {
-            showAlert(Alert.AlertType.ERROR, "Erro", "O email '" + email + "' já está em uso.");
-            return;
-        }
-
-        Usuario novoUsuario = new Usuario(0, nome, email.toLowerCase(), senha);
+        // Passa null para o perfil, pois o banco de dados tem 'user' como padrão
+        Usuario novoUsuario = new Usuario(0, nome, email.toLowerCase(), senha, null); 
         if (usuarioDAO.criarUsuario(novoUsuario)) {
             showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Usuário criado com sucesso!");
             atualizarTabela();
@@ -105,7 +128,7 @@ public class UsuarioController {
     }
 
     private void atualizarUsuario() {
-        if (!validarCampos()) return;
+        if (!validarCampos(false)) return; // Passa 'false' para não checar unicidade
 
         usuarioSelecionado.setNome(nomeTextField.getText());
         usuarioSelecionado.setEmail(emailTextField.getText().toLowerCase());
@@ -160,7 +183,8 @@ public class UsuarioController {
         removerButton.setDisable(true);
     }
     
-    private boolean validarCampos() {
+    // Método de validação centralizado
+    private boolean validarCampos(boolean checarUnicidadeEmail) {
         String email = emailTextField.getText();
         if (nomeTextField.getText().isEmpty() || email.isEmpty() || senhaField.getText().isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Atenção", "Todos os campos devem ser preenchidos.");
@@ -168,6 +192,10 @@ public class UsuarioController {
         }
         if (!ValidaEmail.isValido(email)) {
             showAlert(Alert.AlertType.WARNING, "Atenção", "O formato do e-mail é inválido.");
+            return false;
+        }
+        if (checarUnicidadeEmail && usuarioDAO.emailJaExiste(email)) {
+            showAlert(Alert.AlertType.ERROR, "Erro", "O email '" + email + "' já está em uso.");
             return false;
         }
         return true;

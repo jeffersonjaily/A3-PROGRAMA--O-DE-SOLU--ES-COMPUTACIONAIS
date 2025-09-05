@@ -1,16 +1,17 @@
 {
-    "version": "0.2.0",
-    "configurations": [
+    "java.configuration.runtimes": [
         {
-            "type": "java",
-            "name": "Launch MainApp",
-            "request": "launch",
-            "mainClass": "MainApp",
-            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",
-            "classPaths": [
-                "${workspaceFolder}/Diagrama de Classes – Sistema de Gerenciamento de Usuários/bin",
-                "${workspaceFolder}/Diagrama de Classes – Sistema de Gerenciamento de Usuários/mysql-connector-j-9.4.0.jar"
-            ]
+            "name": "JavaSE-24",
+            "path": "C:\\Program Files\\Java\\jdk-24",
+            "default": true
         }
+    ],
+    "java.project.sourcePaths": [
+        "Gerenciamento_de_Usuarios"
+    ],
+    "java.project.outputPath": "Gerenciamento_de_Usuarios/bin",
+    "java.project.referencedLibraries": [
+        "Gerenciamento_de_Usuarios/mysql-connector-j-9.4.0.jar",
+        "C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\\*.jar"
     ]
-}   
+}

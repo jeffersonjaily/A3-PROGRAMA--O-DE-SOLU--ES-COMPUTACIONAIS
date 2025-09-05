@@ -3,17 +3,15 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS_b7a85397"
-        },
-        {
-            "type": "java",
             "name": "Launch MainApp",
             "request": "launch",
             "mainClass": "MainApp",
-            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\" --add-modules javafx.controls,javafx.fxml"
+            "cwd": "${workspaceFolder}/Gerenciamento_de_Usuarios/bin",
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",
+            "classPaths": [
+                "${workspaceFolder}/Gerenciamento_de_Usuarios/bin",
+                "${workspaceFolder}/Gerenciamento_de_Usuarios/mysql-connector-j-9.4.0.jar"
+            ]
         }
     ]
 }

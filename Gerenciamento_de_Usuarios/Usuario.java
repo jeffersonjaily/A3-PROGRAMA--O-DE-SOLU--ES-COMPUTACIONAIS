@@ -1,55 +1,33 @@
-// Usuario.java (Model)
-
+// Usuario.java (versão atualizada com perfil)
 public class Usuario {
-    // Atributos da classe, representando as colunas da tabela no banco de dados.
     private int id;
     private String nome;
     private String email;
     private String senha;
+    private String perfil; // Novo campo para "admin" ou "user"
 
-    // Construtor para inicializar um objeto Usuario com todos os dados.
-    public Usuario(int id, String nome, String email, String senha) {
+    // Construtor atualizado para incluir o perfil
+    public Usuario(int id, String nome, String email, String senha, String perfil) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.perfil = perfil;
     }
 
-    // --- Getters (Métodos para obter os valores dos atributos) ---
-    public int getId() {
-        return id;
-    }
+    // --- Getters ---
+    public int getId() { return id; }
+    public String getNome() { return nome; }
+    public String getEmail() { return email; }
+    public String getSenha() { return senha; }
+    public String getPerfil() { return perfil; } // Getter para o novo campo
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
+    // --- Setters ---
+    public void setNome(String nome) { this.nome = nome; }
+    public void setEmail(String email) { this.email = email; }
+    public void setSenha(String senha) { this.senha = senha; }
+    public void setPerfil(String perfil) { this.perfil = perfil; } // Setter para o novo campo
     
-    public String getSenha() {
-        return senha;
-    }
-
-    // --- Setters (Métodos para alterar os valores dos atributos) ---
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
-    /**
-     * Retorna uma representação em String do objeto Usuario,
-     * ideal para exibição de dados.
-     * @return Dados formatados do usuário.
-     */
     public String exibirDados() {
         return "ID: " + id + " | Nome: " + nome + " | Email: " + email;
     }
