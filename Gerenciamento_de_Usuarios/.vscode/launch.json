@@ -1,17 +1,26 @@
 {
-    "java.configuration.runtimes": [
+    "version": "0.2.0",
+    "configurations": [
         {
-            "name": "JavaSE-24",
-            "path": "C:\\Program Files\\Java\\jdk-24",
-            "default": true
+            "type": "java",
+            "name": "Launch MainApp",
+            "request": "launch",
+            "mainClass": "MainApp",
+            
+            // Define o diretório de trabalho para a pasta 'bin'
+            "cwd": "${workspaceFolder}/Gerenciamento_de_Usuarios/bin",
+            
+            // Argumentos para carregar o JavaFX
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",
+            
+            // Classpath: Onde encontrar suas classes e bibliotecas
+            "classPaths": [
+                // 1. Pasta com seus .class
+                "${workspaceFolder}/Gerenciamento_de_Usuarios/bin",
+                
+                // 2. O driver do MySQL
+                "${workspaceFolder}/Gerenciamento_de_Usuarios/mysql-connector-j-9.4.0.jar"
+            ]
         }
-    ],
-    "java.project.sourcePaths": [
-        "Gerenciamento_de_Usuarios"
-    ],
-    "java.project.outputPath": "Gerenciamento_de_Usuarios/bin",
-    "java.project.referencedLibraries": [
-        "Gerenciamento_de_Usuarios/mysql-connector-j-9.4.0.jar",
-        "C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\\*.jar"
     ]
 }

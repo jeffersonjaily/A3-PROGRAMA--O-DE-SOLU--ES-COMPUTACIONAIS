@@ -1,0 +1,131 @@
+Com certeza. O projeto evoluiu muito e agora temos uma arquitetura robusta e funcionalidades novas. Uma documentação completa é essencial para registrar esse progresso.
+
+Preparei um documento técnico detalhado, unindo as informações do `README.md`, da apresentação `.pptx` e de todas as atualizações de código que fizemos. Este documento serve como um relatório final do projeto no estado atual.
+
+-----
+
+## Documentação Técnica do Sistema de Gestão de Usuários e Projetos
+
+**Versão:** 1.5
+**Data-Atualização:** 14 de setembro de 2025
+**Autores:** Jefferson Jaily Gonçalves Félix & Equipe
+
+### 1\. Introdução
+
+#### 1.1. Objetivo do Projeto
+
+O objetivo deste projeto é apresentar uma solução Desktop desenvolvida em Java, aplicando de forma prática os conceitos fundamentais da Programação Orientada a Objetos (POO), como **Encapsulamento, Herança e Polimorfismo**. [cite\_start]A aplicação visa fornecer uma interface gráfica intuitiva para a gestão de usuários e projetos, com uma arquitetura modular, segura e de fácil manutenção, utilizando os padrões de projeto MVC e DAO[cite: 18].
+
+#### 1.2. Escopo do Projeto
+
+O sistema foca nas funcionalidades essenciais de gerenciamento, deixando de fora integrações complexas.
+
+  * **Funcionalidades Incluídas:**
+
+      * [cite\_start]CRUD (Cadastro, Leitura, Atualização e Deleção) de Usuários[cite: 21].
+      * [cite\_start]Listagem de todos os usuários cadastrados no sistema[cite: 21].
+      * [cite\_start]Validação de dados de entrada (formato de e-mail)[cite: 22].
+      * CRUD de Projetos (a ser implementado).
+      * [cite\_start]Empacotamento em um instalador para fácil distribuição[cite: 23, 60].
+
+  * **Funcionalidades Não Incluídas:**
+
+      * Integração com redes sociais.
+      * Recuperação de senha via e-mail.
+
+### 2\. Arquitetura da Solução
+
+A aplicação foi desenvolvida sobre uma arquitetura robusta para garantir a separação de responsabilidades e a manutenibilidade do código.
+
+#### 2.1. Padrões de Projeto Aplicados
+
+  * **MVC (Model-View-Controller):** A estrutura principal do projeto segue o padrão MVC.
+
+      * **Model:** Representa os dados e a lógica de negócio. [cite\_start]As classes `Pessoa.java` e `Usuario.java` são os modelos da aplicação[cite: 54].
+      * **View:** Define a interface do usuário (UI). [cite\_start]Os arquivos `UsuarioView.fxml` e `ConfigDbView.fxml` são as views, criadas de forma declarativa[cite: 24].
+      * **Controller:** Atua como intermediário entre o Model e a View, tratando os eventos da interface. [cite\_start]As classes `UsuarioController.java` e `ConfigDbController.java` cumprem esse papel[cite: 54].
+
+  * **DAO (Data Access Object):** A camada de persistência de dados é completamente isolada. A classe `UsuarioDAO.java` é a única responsável por todas as interações com o banco de dados (queries SQL), garantindo que a lógica de negócio permaneça independente.
+
+  * **Singleton:** A classe `ConexaoBD.java` utiliza o padrão Singleton para gerenciar a conexão com o banco de dados. Isso garante que exista apenas uma instância de configuração e conexão, otimizando o uso de recursos.
+
+#### 2.2. Aplicação de Conceitos de POO
+
+  * **Herança:** Para atender aos requisitos do projeto e reutilizar código, foi criada uma classe abstrata `Pessoa` que contém atributos comuns (ID, nome, email, CPF). A classe `Usuario` herda (`extends`) de `Pessoa`, adicionando atributos específicos como login, senha e cargo.
+
+  * **Polimorfismo:** O método `exibirDados()` é um exemplo de polimorfismo, onde a subclasse `Usuario` sobrescreve (`@Override`) o comportamento do método da superclasse `Pessoa` para incluir informações adicionais.
+
+### 3\. Modelo de Dados (Banco de Dados)
+
+O sistema utiliza um banco de dados relacional MySQL para a persistência dos dados.
+
+#### 3.1. Scripts SQL
+
+Abaixo estão os scripts para a criação da estrutura do banco de dados `gestao_usuarios` e suas tabelas.
+
+```sql
+-- Criação do Banco de Dados
+DROP DATABASE IF EXISTS gestao_usuarios;
+CREATE DATABASE gestao_usuarios;
+USE gestao_usuarios;
+
+-- Tabela de Usuários
+CREATE TABLE usuario (
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    cpf VARCHAR(14) NULL,
+    login VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    cargo VARCHAR(100) NULL,
+    perfil VARCHAR(50) NULL DEFAULT 'user'
+);
+
+-- Tabela de Projetos (para futuras implementações)
+CREATE TABLE projeto (
+    id_projeto INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    data_inicio DATE,
+    data_termino_prevista DATE,
+    status VARCHAR(50),
+    id_gerente INT,
+    FOREIGN KEY (id_gerente) REFERENCES usuario(id_usuario)
+);
+```
+
+### 4\. Detalhes da Implementação
+
+  * **Interface Gráfica:** Desenvolvida em **JavaFX**, permitindo uma UI moderna e responsiva.
+  * [cite\_start]**Validação de E-mail:** Utiliza as classes `Matcher` e `Pattern` do Java com Expressões Regulares (Regex) para garantir que os e-mails inseridos tenham um formato válido[cite: 28, 29, 30].
+  * **Comunicação com Banco:** A comunicação é feita via **JDBC (Java Database Connectivity)**, utilizando `try-with-resources` para o gerenciamento seguro e automático das conexões.
+
+### 5\. Guia de Distribuição e Execução
+
+#### 5.1. Compilação e Execução (Ambiente de Desenvolvimento)
+
+1.  **Compilar:** `javac -d bin --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml -cp "lib/*" *.java`
+2.  **Executar:** `java --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml -cp "lib/*;bin" MainApp`
+
+#### 5.2. Criação do Executável (.exe)
+
+Um executável nativo do Windows foi gerado utilizando a ferramenta **Launch4j**. A configuração envolve:
+
+  * Apontar para o JAR principal da aplicação.
+  * Configurar um classpath customizado que inclui todas as dependências da pasta `lib`.
+  * Passar os argumentos de JVM necessários para o JavaFX (`--module-path` e `--add-modules`).
+
+#### 5.3. Criação do Instalador
+
+Um instalador profissional foi criado com o **Inno Setup**. O processo consiste em:
+
+  * Organizar todos os artefatos da aplicação (o `.exe` do Launch4j, o `.jar` principal, a pasta `lib` e um JRE embarcado) em uma pasta de distribuição (`dist`).
+  * Usar o Inno Setup para gerar um `setup.exe` que copia esses arquivos, cria atalhos e adiciona uma entrada de desinstalação.
+
+### 6\. Equipe
+
+  * **Jefferson Jaily Gonçalves Félix** – Líder Técnico e Desenvolvedor Principal
+  * [cite\_start]**Maria Liliane Vasconcelos Barros** – Desenvolvedora e Documentação [cite: 66]
+  * [cite\_start]**João Vitor Ruggi Seara** – Especialista Backend e Integração [cite: 64]
+  * [cite\_start]**ISABELLE Benegas MARIANO** – Designer de UI/UX [cite: 67]
+  * [cite\_start]**Flávio Costa da Silva** – Analista de Requisitos [cite: 68]

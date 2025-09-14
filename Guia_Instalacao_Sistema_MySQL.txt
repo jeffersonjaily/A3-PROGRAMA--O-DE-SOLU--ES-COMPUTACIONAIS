@@ -1,0 +1,78 @@
+Claro, Jefferson!  
+Corrigi seu texto para remover caracteres estranhos, ajustar acentuação, padronizar a formatação e melhorar a clareza.  
+Segue a versão revisada:
+
+---
+
+# Guia de Instalação e Configuração – Meu Sistema + MySQL
+
+## 1. Requisitos do Sistema
+- Windows 10/11 (64 bits recomendado)  
+- Java Runtime Environment (JRE) ou JDK 17+  
+- MySQL Server 8.0 ou superior  
+- (Opcional) MySQL Workbench para gerenciar o banco de dados  
+
+---
+
+## 2. Instalação do MySQL
+1. Baixe o MySQL no site oficial:  
+   🔗 https://dev.mysql.com/downloads/mysql/  
+2. Durante a instalação:  
+   - Escolha **Developer Default** ou **Server Only**  
+   - Defina a senha do usuário **root** e anote-a  
+   - Mantenha a porta padrão **3306**  
+3. (Opcional) Instale também o MySQL Workbench:  
+   🔗 https://dev.mysql.com/downloads/workbench/  
+
+---
+
+## 3. Criando o Banco de Dados
+Após instalar o MySQL, execute no MySQL Workbench ou no terminal:
+
+```sql
+CREATE DATABASE meu_sistema;
+USE meu_sistema;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+```
+
+---
+
+## 4. Configuração do Sistema
+1. Verifique se o servidor MySQL está em execução.  
+2. Edite o arquivo de configuração (`config.properties`, `application.properties` ou equivalente):
+
+```
+db.url=jdbc:mysql://localhost:3306/meu_sistema
+db.user=root
+db.password=SUASENHA
+```
+> Substitua **SUASENHA** pela senha definida durante a instalação.
+
+3. Salve as alterações e inicie o programa.
+
+---
+
+## 5. Executando o Programa
+- Abra o atalho **MeuSistema.exe** instalado.  
+- Faça login ou cadastre novos usuários.  
+- Os dados serão salvos diretamente no banco MySQL configurado.  
+
+---
+
+## 6. Resolução de Problemas
+- **Erro de conexão:** verifique se o MySQL Server está rodando.  
+- **Senha incorreta:** confira a senha definida para o usuário root.  
+- **Porta em uso:** certifique-se de que a porta **3306** está livre.  
+- **Driver JDBC ausente:** confirme se o arquivo `mysql-connector-java.jar` está na pasta **lib** do programa.  
+
+📚 Em caso de dúvidas, consulte a documentação oficial:  
+🔗 https://dev.mysql.com/doc/
+
+---
+

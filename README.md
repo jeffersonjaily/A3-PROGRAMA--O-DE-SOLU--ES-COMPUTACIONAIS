@@ -136,9 +136,11 @@ O objetivo é demonstrar a separação de responsabilidades entre as camadas (Mo
 
 ## 7. Equipe
 
-- **Jefferson** – Líder técnico e desenvolvedor principal  
-- **Maria Liliane Vasconcelos Barros** – Auxiliar de desenvolvimento e documentação  
-- **João Vitor Ruggi Seara** – Especialista backend e integração  
+  * **Jefferson Jaily Gonçalves Félix** – Líder Técnico e Desenvolvedor Principal
+  * **Maria Liliane Vasconcelos Barros** – Desenvolvedora e Documentação
+  ***João Vitor Ruggi Seara** – Especialista Backend e Integração 
+  * **ISABELLE Benegas MARIANO** – Designer de UI/UX 
+  * **Flávio Costa da Silva** – Analista de Requisitos 
 
 ---
 

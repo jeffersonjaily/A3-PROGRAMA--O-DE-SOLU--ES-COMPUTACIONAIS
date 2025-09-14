@@ -1,22 +1,17 @@
 {
-    // Força o VS Code a usar o JDK 24 para compilar e analisar o código
-    "java.configuration.runtimes": [
+    "version": "0.2.0",
+    "configurations": [
         {
-            "name": "JavaSE-24",
-            "path": "C:\\Program Files\\Java\\jdk-24",
-            "default": true
+            "type": "java",
+            "name": "Executar MainApp",
+            "request": "launch",
+            "mainClass": "MainApp",
+            "cwd": "${workspaceFolder}/Gerenciamento_de_Usuarios/bin",
+            "vmArgs": "--enable-preview --module-path \"C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\" --add-modules javafx.controls,javafx.fxml",
+            "classPaths": [
+                "${workspaceFolder}/Gerenciamento_de_Usuarios/bin",
+                "${workspaceFolder}/Gerenciamento_de_Usuarios/mysql-connector-j-9.4.0.jar"
+            ]
         }
-    ],
-    // Informa onde estão seus arquivos .java
-    "java.project.sourcePaths": [
-        "Gerenciamento_de_Usuarios"
-    ],
-    // Informa onde salvar os arquivos .class compilados
-    "java.project.outputPath": "Gerenciamento_de_Usuarios/bin",
-    
-    // Informa todas as bibliotecas externas que o projeto precisa para compilar e para o autocompletar
-    "java.project.referencedLibraries": [
-        "Gerenciamento_de_Usuarios/mysql-connector-j-9.4.0.jar",
-        "C:\\Program Files\\Java\\javafx-sdk-24.0.2\\lib\\*.jar"
     ]
 }

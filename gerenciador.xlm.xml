@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>G:\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\Gerenciamento_de_Usuarios\bin\Gerenciamento_de_Usuarios.jar</jar>
-  <outfile>G:\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\Gerenciamento_de_Usuarios\bin\Gerenciamento_de_Usuarios.exe</outfile>
+  <jar>G:\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\Gerenciamento_de_Usuarios\Gerenciamento_de_Usuarios.jar</jar>
+  <outfile>G:\A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\Gerenciamento_de_Usuarios\gerenciameto.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>

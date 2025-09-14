@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "web/MainApp",
+            "request": "launch",
+            "mainClass": "javafx.web/MainApp",
+            "projectName": "A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS_7d27453b"
+        },
+        {
+            "type": "java",
             "name": "Launch MainApp",
             "request": "launch",
             "mainClass": "MainApp",
