@@ -33,13 +33,11 @@ O objetivo é demonstrar a separação de responsabilidades entre as camadas (Mo
 
 ```plaintext
 \A3-PROGRAMA--O-DE-SOLU--ES-COMPUTACIONAIS\
-├── .vscode
 ├── assets\
 │   ├── favicon.ico
 │   ├── ícone para um aplica-Photoroom.png
 │   └── ícone para um aplica.png
 ├── Gerenciamento_de_Usuarios\
-│   ├── .vscode
 │   ├── bin\
 │   │   ├── view\
 │   │   │   ├── ConfigDbView.fxml
